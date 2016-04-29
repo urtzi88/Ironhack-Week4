@@ -1,0 +1,25 @@
+<div class="columns">
+  <div class="column button-show">
+    <%= link_to concerts_path, class: "button" do %>
+      <span class="icon">
+        <i class="fa fa-chevron-circle-left "></i>
+      </span>
+      <span>Back to concerts</span>
+    <% end %>
+    <% if edit %>
+      <%= link_to concert_path(concert), class: "button" do %>
+        <span class="icon">
+          <i class="fa fa-info-circle "></i>
+        </span>
+        <span>Show concert details</span>
+      <% end %>
+    <% else %>
+      <%= link_to edit_concert_path(concert), class: "button" do %>
+        <span class="icon">
+          <i class="fa fa-pencil "></i>
+        </span>
+        <span>Edit this concert</span>
+      <% end %>
+    <% end %>
+  </div>
+</div>

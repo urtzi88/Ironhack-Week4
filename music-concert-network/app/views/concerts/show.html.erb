@@ -1,0 +1,82 @@
+<%= render 'concerts/alerts' %>
+
+<div class="columns">
+  <div class="column">
+    <h1 class="title">Details for: <%= @concert.artist %></h1>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+
+    <div class="card is-fullwidth">
+      <header class="card-header">
+        <p class="card-header-title">
+          <%= @concert.artist %>
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <p>Image will go here</p>
+        </div>
+      </div>
+    </div>
+    <div class="card is-fullwidth">
+      <header class="card-header">
+        <p class="card-header-title">
+          Details
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <p><strong>Venue: </strong><%= @concert.venue %></p>
+          <p><strong>City: </strong><%= @concert.city %></p>
+          <p><strong>Date: </strong><%= @concert.date %></p>
+          <p class="price"><strong>Price: </strong><%= @concert.price %></p>
+          <p class="concert-description"><strong>Description: </strong><%= @concert.description %></p>
+        </div>
+      </div>
+    </div>
+    <%= render 'concerts/buttons_show', concert: @concert, edit: false %>
+  </div>
+  <div class="column">
+
+    <div class="card is-fullwidth">
+      <header class="card-header">
+        <p class="card-header-title">
+          Comments
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <% @comments.each do |comment| %>
+            <p>
+              <% if comment.user.present? %>
+                <%= link_to concert_comment_path(:id => comment.id, :concert_id => @concert.id), method: :delete, class: "button is-small is-danger" do %>
+                  <span class="icon">
+                    <i class="fa fa-trash "></i>
+                  </span>
+                <% end %>
+              <% end %>
+              <strong><%= comment.user %></strong>
+              <%= comment.comment %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="card is-fullwidth">
+      <header class="card-header">
+        <p class="card-header-title">
+          Leave a comment:
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <%= render '/partials/errors', record: @comment %>
+          <%= render 'comments/new_comment_form' %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

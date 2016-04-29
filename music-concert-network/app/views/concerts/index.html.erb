@@ -1,0 +1,115 @@
+<%= render 'alerts' %>
+<div class="columns">
+  <div class="column is-three-quarters">
+    <h1 class="title">Concerts today</h1>
+  </div>
+  <div class="column">
+    <h1 class="title">Upcoming</h1>
+  </div>
+</div>
+<div class="columns">
+  <div class="column is-three-quarters">
+    <% today(@concerts).each_with_index do |concert, index| %>
+      <% if index % 2 == 0 %>
+        <div class="columns">
+      <% end %>
+      <div class="column is-half">
+        <div class="card is-fullwidth">
+          <header class="card-header">
+            <p class="card-header-title">
+              <%= concert.artist %>
+            </p>
+            <%= link_to edit_concert_path(concert), class: "card-link" do %>
+              <i class="fa fa-pencil "></i>
+            <% end %>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p class="concert-description"><%= concert.description %></p>
+              <small>
+                <p><%= concert.city %></p>
+                <p><%= concert.date %></p>
+                <p><%= concert.price %></p>
+                <p class="price"><%= concert.price %></p>
+              </small>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <p class="card-footer-item"><%= link_to "View", concert_path(concert) %></p>
+            <p class="card-footer-item"><%= link_to "Delete", concert_path(concert), method: :delete %></p>
+          </footer>
+        </div>
+      </div>
+      <% if index % 2 == 1 %>
+        </div>
+        <% @close_div = false %>
+      <% else %>
+        <% @close_div = true %>
+      <% end %>
+    <% end %>
+    <% if @close_div %>
+      </div>
+    <% end %>
+    </div>
+  <aside class="column is-one-quarter">
+
+    <div class="card is-fullwidth">
+      <header class="card-header">
+        <p class="card-header-title">
+          Concerts this month
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <ul>
+            <% this_month(@concerts).each do |concert| %>
+            <li>
+              <%= link_to "#{concert.artist}", concert_path(concert) %>
+              <small><%= concert.date%></small>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card is-fullwidth">
+      <header class="card-header">
+        <p class="card-header-title">
+          All the concerts (from next month)
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <ul>
+            <% all_from_next_month(@concerts).each do |concert| %>
+              <li>
+                <%= link_to "#{concert.artist}", concert_path(concert) %>
+                <small><%= concert.date %></small>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="card is-fullwidth">
+        <header class="card-header">
+          <p class="card-header-title">
+            Missed concerts
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <ul>
+              <% missed(@concerts).each do |concert| %>
+                <li>
+                  <%= link_to "#{concert.artist}", concert_path(concert) %>
+                  <small><%= concert.date %></small>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+    </div>
+
+
+  </aside>
+</div>

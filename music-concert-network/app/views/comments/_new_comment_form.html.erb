@@ -1,0 +1,5 @@
+<%= form_for [@concert, @comment] do |f| %>
+  <%= f.text_field :user, :placeholder => "User", class: "input" %>
+  <%= f.text_area :comment, :placeholder => "Comment", class: "textarea" %>
+  <%= f.submit 'Save' , class: "button is-success is-fullwidth", id: "save_button"%>
+<% end %>

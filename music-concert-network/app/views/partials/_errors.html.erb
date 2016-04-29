@@ -1,0 +1,11 @@
+<div class="columns">
+  <div class="column">
+    <% if record.errors.present? %>
+      <ul class="valid-box">
+        <% record.errors.full_messages.each do |msg| %>
+          <li class="validation"><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MusicConcertNetwork</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header class="header container hc-field">
+    <h1 class="title is-2">MCN</h1><h1>Music Concert Network</h1>
+  </header>
+  <div class="container">
+    <nav class="navbar">
+      <div class="navbar-left"></div>
+      <div class="navbar-right">
+        <p class="navbar-item">
+          <%= link_to new_concert_path, class: "button" do %>
+            <span class="icon">
+              <i class="fa fa-plus "></i>
+            </span>
+            <span>Add a concert</span>
+          <% end %>
+          <%= link_to by_price_path, class: "button" do %>
+            <span class="icon">
+              <i class="fa fa-search "></i>
+            </span>
+            <span>Search</span>
+          <% end %>
+        </p>
+      </div>
+    </nav>
+  </div>
+  <div class="section">
+    <div class="container">
+      <%= yield %>
+    </div>
+  </div>
+  <div class="columns">
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">
+          <strong>MusicConcertNetwork - MCN</strong> by <a href="#">@urtzip</a>.
+        </p>
+        <p class="footer-buttons">
+          <a class="button" href="https://twitter.com/urtzip" target="_blank">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+            <span>Twitter</span>
+          </a>
+          <a class="button" href="https://es.linkedin.com/in/urtzip" target="_blank">
+            <span class="icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+            <span>LinkedIn</span>
+          </a>
+          <a class="button" href="https://github.com/urtzi88" target="_blank">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+            <span>GitHub</span>
+          </a>
+        </p>
+      </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<div class="columns">
+  <div class="column">
+    <h1 class="title">Add a new concert</h1>
+  </div>
+</div>
+<%= render 'alerts' %>
+<%= render '/partials/errors', record: @concert %>
+<%= render 'form'%>
+<div class="columns">
+  <div class="column">
+    <%= link_to concerts_path, class: "button" do %>
+      <span class="icon">
+        <i class="fa fa-chevron-circle-left "></i>
+      </span>
+      <span>Back to concerts</span>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="columns">
+  <div class="column is-one-quarter">
+    <h1 class="title">Let's search concerts by price</h1>
+    <%= form_for "by_price" do |f| %>
+      <%= f.text_field :price, :placeholder => "Price", class: "input" %>
+      <%= f.submit 'Search' , class: "button is-success is-fullwidth", id: "save_button"%>
+    <% end %>
+  </div>
+  <div class="column">
+    <% if @concerts %>
+      <% @concerts.each_with_index do |concert, index| %>
+        <% if index % 2 == 0 %>
+          <div class="columns">
+          <% @close = true %>
+        <% end %>
+        <div class="column is-half">
+          <div class="card is-fullwidth">
+            <header class="card-header">
+              <p class="card-header-title">
+                <%= concert.artist %>
+              </p>
+              <%= link_to edit_concert_path(concert), class: "card-link" do %>
+                <i class="fa fa-pencil "></i>
+              <% end %>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <p class="concert-description"><%= concert.description %></p>
+                <small>
+                  <p><%= concert.city %></p>
+                  <p><%= concert.date %></p>
+                  <p class="price"><%= concert.price %></p>
+                </small>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <p class="card-footer-item"><%= link_to "View", concert_path(concert) %></p>
+            </footer>
+          </div>
+        </div>
+        <% if index % 2 == 1 %>
+          </div>
+          <% @close = false %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if @close %>
+      </div>
+    <% end %>
+  </div>
+</div>
