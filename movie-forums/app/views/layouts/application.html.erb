@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Urtzi's Movie Forum</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <header class="col-sm-12">
+        <h1>Urtzi's Movie Forum</h1>
+      </header>
+    </div>
+    <%= yield %>
+    <div class="row">
+      <footer class="col-sm-12">
+        <p>urtzip @Ironhack 2016</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

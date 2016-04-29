@@ -1,0 +1,16 @@
+<h3>This is the result of the processed text:</h3>
+
+<h3>Text: <%= @text %></h3>
+
+<h3>Amount of words: <%= @word_count %></h3>
+
+<p>The average adult would take <%= @time_to_read %> seconds to read this text</p>
+
+<p>These are the most used words in your text:</p>
+<ul>
+  <%@word_freq.each do |word|%>
+  <li><%=word[0]%>: <%=word[1]%></li>
+  <%end%>
+</ul>
+
+<%= link_to "Home", "/" %>

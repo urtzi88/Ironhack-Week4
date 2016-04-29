@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @movie.title %></h3>
+          </div>
+          <div class="panel-body">
+            <%= image_tag("#{@movie.poster}") %>
+            <p><%= @movie.year %></p>
+            <p><%= @movie.synopsis %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <%= link_to "New search", movies_path, class: "btn btn-default btn-back" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Forum:</h3>
+          </div>
+          <div class="panel-body">
+            <% @comments.each do |comment| %>
+              <p>
+                <strong><%= comment.user %></strong>
+                <%= comment.comment %>
+                <span><%= comment.date %></span>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Post a comment:</h3>
+          </div>
+          <div class="panel-body">
+            <%= form_for @comment do |f| %>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">User</span>
+                <%= f.text_field :user, class: "form-control"%>
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Comment</span>
+                <%= f.text_field :comment, class: "form-control"%>
+              </div>
+              <%= f.hidden_field :date, value: Date.today %>
+              <%= f.submit "Post", class: "btn btn-default" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

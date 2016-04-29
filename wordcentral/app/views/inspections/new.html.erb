@@ -1,0 +1,9 @@
+<h2>Submit text for inspection</h2>
+
+<form action="/text_inspections" method="post">
+  <div>
+    <textarea name="text_inspection[user_text]" id="text_inspection_user_text" placeholder="Text"></textarea>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  </div>
+  <button type="submit">Submit text</button>
+</form>

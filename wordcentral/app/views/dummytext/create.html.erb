@@ -1,0 +1,15 @@
+<p><%=@number%> <%=@obj%> to generate</p>
+
+<% if @dummy_words[0].is_a? String
+  %><p>
+    <%@dummy_words.each do |word|
+      word
+    end%>
+  </p>
+  <%else
+    @dummy_words.each do |word|
+      %><p><%=word%></p>
+    <%end
+  end%>
+
+<%= link_to "Home", "/" %>

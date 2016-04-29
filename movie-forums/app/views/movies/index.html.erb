@@ -1,0 +1,22 @@
+<% @movies.each_with_index do |movie, index| %>
+  <% if index % 4 == 0 %>
+    <div class="row">
+  <% end %>
+      <div class="col-sm-3">
+        <%= link_to movie_path(movie) do %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= index + 1 %>. <%= movie.title %></h3>
+            </div>
+            <div class="panel-body">
+              <%= image_tag("#{movie.poster}") %>
+              <p><%= movie.year %></p>
+              <p><%= movie.synopsis %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  <% if index % 4 == 3 %>
+</div>
+  <% end %>
+<% end %>

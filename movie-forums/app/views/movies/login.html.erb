@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-sm-12">
+    <%= form_for @user do |f| %>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Username</span>
+        <%= f.text_field :name, class: "form-control"%>
+      </div>
+      <%= f.submit "Post", class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>

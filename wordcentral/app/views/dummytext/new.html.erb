@@ -1,0 +1,13 @@
+<h2>Select amount of paragraphs</h2>
+
+<form action="/dummytext" method="post">
+  <div>
+    <input type="number" name="number_of_paragraphs" id="number_of_paragraphs" placeholder="# of..."></input>
+    <select name="obj">
+      <option value="words">Words</option>
+      <option value="paragraphs">Paragraphs</option>
+    </select>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  </div>
+  <button type="submit">Submit text</button>
+</form>
